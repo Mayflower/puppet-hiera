@@ -12,6 +12,7 @@ class hiera::params {
           datasource => 'data'
         }
       }
+      $merge_behavior = 'native'
     }
     default: {
       fail("${::osfamily} is not supported :(")

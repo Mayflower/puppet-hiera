@@ -2,7 +2,8 @@ class hiera (
   $config         = $hiera::params::config,
   $backends       = $hiera::params::backends,
   $hierarchy      = $hiera::params::hierarchy,
-  $backend_config = $hiera::params::backend_config
+  $backend_config = $hiera::params::backend_config,
+  $merge_behavior = $hiera::params::merge_behavior,
 ) inherits hiera::params {
 
   file { "${config}_hiera.yaml":
