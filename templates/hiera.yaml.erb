@@ -1,16 +1,16 @@
 ---
 :backends: <% scope.lookupvar('hiera::backends').each do |backend| %>
   - <%= backend -%>
-<% end -%>
+<% end %>
 
 :hierarchy: <% scope.lookupvar('hiera::hierarchy').each do |hiera_entry| %>
-  - '<%= hiera_entry.to_s.gsub(/v\{/, '%{') %>'
-<%- end -%>
+  - "<%= hiera_entry.to_s.gsub(/v\{/, '%{') -%>"
+<% end %>
 
 <% scope.lookupvar('hiera::backend_config').sort.each do |backend_cfg| %>
-:<%= backend_cfg[0] %>:<% backend_cfg[1].sort.each do |k,v| %>
-  :<%= k %>: '<%= v.to_s.gsub(/v\{/, '%{') -%>'
-<%- end -%>
+<%= backend_cfg[0] %>:<% backend_cfg[1].sort.each do |k,v| %>
+  :<%= k %>: <%= v.to_s.gsub(/v\{/, '%{') -%>
+<% end %>
 <% end %>
 
 :merge_behavior: <%= scope.lookupvar('hiera::merge_behavior') %>
